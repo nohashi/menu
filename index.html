@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemini Lounge - Bar Menu</title>
+    <style>
+        :root {
+            --gold-light: #f3e2a0;
+            --gold-main: #d4af37;
+            --gold-dark: #a67c00;
+            --bg-color: #121416;
+            --text-white: #e0e0e0;
+        }
+
+        body {
+            background-color: #000;
+            margin: 0;
+            padding: 0;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+        }
+
+        .menu-container {
+            background-color: var(--bg-color);
+            background-image: radial-gradient(circle at top right, #2a2d30, #121416);
+            width: 100%;
+            max-width: 450px;
+            min-height: 100vh;
+            padding: 40px 20px;
+            box-sizing: border-box;
+            color: var(--text-white);
+            text-align: center;
+            border: 1px solid #333;
+        }
+
+        header h1 {
+            color: var(--gold-main);
+            font-size: 2.4rem;
+            letter-spacing: 4px;
+            margin-bottom: 5px;
+            font-weight: 300;
+            text-transform: uppercase;
+        }
+
+        header p {
+            font-size: 1.4rem;
+            letter-spacing: 3px;
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+
+        .category-banner {
+            background: linear-gradient(90deg, transparent, var(--gold-dark), var(--gold-light), var(--gold-dark), transparent);
+            color: #000;
+            font-weight: bold;
+            padding: 8px 0;
+            margin: 30px 0 20px 0;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            position: relative;
+            text-transform: uppercase;
+        }
+
+        /* リボン端の装飾 */
+        .category-banner::before, .category-banner::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 0;
+            height: 0;
+            border-style: solid;
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 18px;
+            font-size: 1.1rem;
+        }
+
+        .icon {
+            width: 35px;
+            height: 35px;
+            margin-right: 15px;
+            fill: var(--gold-light);
+            flex-shrink: 0;
+        }
+
+        .item-name {
+            flex-grow: 1;
+            text-align: left;
+            white-space: nowrap;
+        }
+
+        .dots {
+            flex-grow: 1;
+            border-bottom: 1px dotted #666;
+            margin: 0 10px;
+            position: relative;
+            top: -5px;
+        }
+
+        .price {
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        /* 金色のテキスト装飾 */
+        .gold-text {
+            background: linear-gradient(to bottom, var(--gold-light), var(--gold-main));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="menu-container">
+    <header>
+        <h1 class="gold-text">GEMINI LOUNGE</h1>
+        <p>BAR MENU</p>
+    </header>
+
+    <div class="category-banner">SIGNATURE COCKTAILS</div>
+    
+    <div class="menu-item">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M7.5,7L12,13L16.5,7H7.5M3,2L12,14L21,2H3M11,14V20H7V22H17V20H13V14H11Z" /></svg>
+        <span class="item-name">Midnight Manhattan</span>
+        <span class="dots"></span>
+        <span class="price">¥1,500</span>
+    </div>
+
+    <div class="menu-item" style="padding-left: 50px;"> <span class="item-name">Midnight Manhattan</span>
+        <span class="dots"></span>
+        <span class="price">¥1,300</span>
+    </div>
+
+    <div class="menu-item">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M3,2L21,2V4L13,12V18H18V20H6V18H11V12L3,4V2M5.43,4L12,10.57L18.57,4H5.43Z" /></svg>
+        <span class="item-name">Golden Hour G&T</span>
+        <span class="dots"></span>
+        <span class="price">¥1,300</span>
+    </div>
+
+    <div class="category-banner">CLASSIC COCKTAILS</div>
+
+    <div class="menu-item">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M3,2H21V20A2,2 0 0,1 19,22H5A2,2 0 0,1 3,20V2M5,4V7H19V4H5M5,9V20H19V9H5Z" /></svg>
+        <span class="item-name">Old Fashioned</span>
+        <span class="dots"></span>
+        <span class="price">¥1,400</span>
+    </div>
+
+    <div class="menu-item">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M3,2H21V20A2,2 0 0,1 19,22H5A2,2 0 0,1 3,20V2M5,4V7H19V4H5M5,9V20H19V9H5Z" /></svg>
+        <span class="item-name">Negroni</span>
+        <span class="dots"></span>
+        <span class="price">¥1,400</span>
+    </div>
+
+    <div class="category-banner">BAR BITES</div>
+
+    <div class="menu-item">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M11,2L9,4L11,6L9,8L11,10L9,12L11,14L9,16L11,18L9,20L11,22H13L15,20L13,18L15,16L13,14L15,12L13,10L15,8L13,6L15,4L13,2H11Z" /></svg>
+        <span class="item-name">Truffle Fries</span>
+        <span class="dots"></span>
+        <span class="price">¥900</span>
+    </div>
+
+    <div class="menu-item">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M11,7L9.6,8.4L11.2,10L9.6,11.6L11,13L12.6,11.4L14.2,13L15.6,11.6L14,10L15.6,8.4L14.2,7L12.6,8.6L11,7Z" /></svg>
+        <span class="item-name">Artisan Cheese Plate</span>
+        <span class="dots"></span>
+        <span class="price">¥1,600</span>
+    </div>
+
+</div>
+
+</body>
+</html>
