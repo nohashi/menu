@@ -17,7 +17,7 @@
             background-color: #000;
             margin: 0;
             padding: 0;
-            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
             display: flex;
             justify-content: center;
         }
@@ -56,34 +56,24 @@
             color: #000;
             font-weight: bold;
             padding: 8px 0;
-            margin: 30px 0 20px 0;
+            margin: 40px 0 20px 0;
             font-size: 1.1rem;
             letter-spacing: 1px;
             position: relative;
             text-transform: uppercase;
         }
 
-        /* リボン端の装飾 */
-        .category-banner::before, .category-banner::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            width: 0;
-            height: 0;
-            border-style: solid;
-        }
-
         .menu-item {
             display: flex;
             align-items: center;
             margin-bottom: 18px;
-            font-size: 1.1rem;
+            font-size: 1.0rem;
         }
 
         .icon {
-            width: 35px;
-            height: 35px;
-            margin-right: 15px;
+            width: 28px;
+            height: 28px;
+            margin-right: 12px;
             fill: var(--gold-light);
             flex-shrink: 0;
         }
@@ -92,11 +82,13 @@
             flex-grow: 1;
             text-align: left;
             white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .dots {
             flex-grow: 1;
-            border-bottom: 1px dotted #666;
+            border-bottom: 1px dotted #555;
             margin: 0 10px;
             position: relative;
             top: -5px;
@@ -105,15 +97,14 @@
         .price {
             font-weight: 500;
             white-space: nowrap;
+            font-family: 'Courier New', Courier, monospace;
         }
 
-        /* 金色のテキスト装飾 */
         .gold-text {
             background: linear-gradient(to bottom, var(--gold-light), var(--gold-main));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-
     </style>
 </head>
 <body>
@@ -125,19 +116,12 @@
     </header>
 
     <div class="category-banner">SIGNATURE COCKTAILS</div>
-    
     <div class="menu-item">
         <svg class="icon" viewBox="0 0 24 24"><path d="M7.5,7L12,13L16.5,7H7.5M3,2L12,14L21,2H3M11,14V20H7V22H17V20H13V14H11Z" /></svg>
         <span class="item-name">Midnight Manhattan</span>
         <span class="dots"></span>
         <span class="price">¥1,500</span>
     </div>
-
-    <div class="menu-item" style="padding-left: 50px;"> <span class="item-name">Midnight Manhattan</span>
-        <span class="dots"></span>
-        <span class="price">¥1,300</span>
-    </div>
-
     <div class="menu-item">
         <svg class="icon" viewBox="0 0 24 24"><path d="M3,2L21,2V4L13,12V18H18V20H6V18H11V12L3,4V2M5.43,4L12,10.57L18.57,4H5.43Z" /></svg>
         <span class="item-name">Golden Hour G&T</span>
@@ -145,15 +129,199 @@
         <span class="price">¥1,300</span>
     </div>
 
-    <div class="category-banner">CLASSIC COCKTAILS</div>
+    <div class="category-banner">JAPANESE SAKE</div>
+    <div class="menu-item">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M14,11V2H10V11C10,11.55 9.55,12 9,12H8V22H16V12H15C14.45,12 14,11.55 14,11M6,17H2V22H6V17Z" /></svg>
+        <span class="item-name">獺祭 磨き二割三分</span>
+        <span class="dots"></span>
+        <span class="price">¥2,800</span>
+    </div>
+    <div class="menu-item">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M14,11V2H10V11C10,11.55 9.55,12 9,12H8V22H16V12H15C14.45,12 14,11.55 14,11M6,17H2V22H6V17Z" /></svg>
+        <span class="item-name">久保田 萬寿</span>
+        <span class="dots"></span>
+        <span class="price">¥2,400</span>
+    </div>
+    <div class="menu-item">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M14,11V2H10V11C10,11.55 9.55,12 9,12H8V22H16V12H15C14.45,12 14,11.55 14,11M6,17H2V22H6V17Z" /></svg>
+        <span class="item-name">黒龍 しずく</span>
+        <span class="dots"></span>
+        <span class="price">¥3,000</span>
+    </div>
+    <div class="menu-item">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M14,11V2H10V11C10,11.55 9.55,12 9,12H8V22H16V12H15C14.45,12 14,11.55 14,11M6,17H2V22H6V17Z" /></svg>
+        <span class="item-name">新政 No.6 S-type</span>
+        <span class="dots"></span>
+        <span class="price">¥2,200</span>
+    </div>
+    <div class="menu-item">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M14,11V2H10V11C10,11.55 9.55,12 9,12H8V22H16V12H15C14.45,12 14,11.55 14,11M6,17H2V22H6V17Z" /></svg>
+        <span class="item-name">而今 特別純米</span>
+        <span class="dots"></span>
+        <span class="price">¥1,800</span>
+    </div>
+    <div class="menu-item">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M14,11V2H10V11C10,11.55 9.55,12 9,12H8V22H16V12H15C14.45,12 14,11.55 14,11M6,17H2V22H6V17Z" /></svg>
+        <span class="item-name">写楽 純米吟醸</span>
+        <span class="dots"></span>
+        <span class="price">¥1,600</span>
+    </div>
+    <div class="menu-item">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M14,11V2H10V11C10,11.55 9.55,12 9,12H8V22H16V12H15C14.45,12 14,11.55 14,11M6,17H2V22H6V17Z" /></svg>
+        <span class="item-name">醸し人九平次 </span>
+        <span class="dots"></span>
+        <span class="price">¥1,900</span>
+    </div>
+    <div class="menu-item">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M14,11V2H10V11C10,11.55 9.55,12 9,12H8V22H16V12H15C14.45,12 14,11.55 14,11M6,17H2V22H6V17Z" /></svg>
+        <span class="item-name">八海山 大吟醸</span>
+        <span class="dots"></span>
+        <span class="price">¥1,500</span>
+    </div>
+    <div class="menu-item">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M14,11V2H10V11C10,11.55 9.55,12 9,12H8V22H16V12H15C14.45,12 14,11.55 14,11M6,17H2V22H6V17Z" /></svg>
+        <span class="item-name">鳳凰美田 純米大吟醸</span>
+        <span class="dots"></span>
+        <span class="price">¥1,700</span>
+    </div>
+    <div class="menu-item">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M14,11V2H10V11C10,11.55 9.55,12 9,12H8V22H16V12H15C14.45,12 14,11.55 14,11M6,17H2V22H6V17Z" /></svg>
+        <span class="item-name">作 雅乃智</span>
+        <span class="dots"></span>
+        <span class="price">¥1,600</span>
+    </div>
 
+    <div class="category-banner">WINE</div>
+    <div class="menu-item">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M12,2L12,2C10.11,2 8.5,3.5 8.5,5.4V10C8.5,11.91 10,13.52 11.9,13.6L12,13.6C12.1,13.6 12.1,13.6 12.2,13.6C14.1,13.52 15.6,11.91 15.6,10V5.4C15.6,3.5 13.9,2 12,2M13,19V22H11V19C8.39,18.5 6.4,16.2 6.4,13.4V13H8.4V13.4C8.4,15.4 10,17 12,17C14,17 15.6,15.4 15.6,13.4V13H17.6V13.4C17.6,16.2 15.6,18.5 13,19Z" /></svg>
+        <span class="item-name">Chardonnay (White)</span>
+        <span class="dots"></span>
+        <span class="price">¥1,400</span>
+    </div>
+    <div class="menu-item">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M12,2L12,2C10.11,2 8.5,3.5 8.5,5.4V10C8.5,11.91 10,13.52 11.9,13.6L12,13.6C12.1,13.6 12.1,13.6 12.2,13.6C14.1,13.52 15.6,11.91 15.6,10V5.4C15.6,3.5 13.9,2 12,2M13,19V22H11V19C8.39,18.5 6.4,16.2 6.4,13.4V13H8.4V13.4C8.4,15.4 10,17 12,17C14,17 15.6,15.4 15.6,13.4V13H17.6V13.4C17.6,16.2 15.6,18.5 13,19Z" /></svg>
+        <span class="item-name">Sauvignon Blanc</span>
+        <span class="dots"></span>
+        <span class="price">¥1,300</span>
+    </div>
+    <div class="menu-item">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M12,2L12,2C10.11,2 8.5,3.5 8.5,5.4V10C8.5,11.91 10,13.52 11.9,13.6L12,13.6C12.1,13.6 12.1,13.6 12.2,13.6C14.1,13.52 15.6,11.91 15.6,10V5.4C15.6,3.5 13.9,2 12,2M13,19V22H11V19C8.39,18.5 6.4,16.2 6.4,13.4V13H8.4V13.4C8.4,15.4 10,17 12,17C14,17 15.6,15.4 15.6,13.4V13H17.6V13.4C17.6,16.2 15.6,18.5 13,19Z" /></svg>
+        <span class="item-name">Chablis Premier Cru</span>
+        <span class="dots"></span>
+        <span class="price">¥2,100</span>
+    </div>
+    <div class="menu-item">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M12,2L12,2C10.11,2 8.5,3.5 8.5,5.4V10C8.5,11.91 10,13.52 11.9,13.6L12,13.6C12.1,13.6 12.1,13.6 12.2,13.6C14.1,13.52 15.6,11.91 15.6,10V5.4C15.6,3.5 13.9,2 12,2M13,19V22H11V19C8.39,18.5 6.4,16.2 6.4,13.4V13H8.4V13.4C8.4,15.4 10,17 12,17C14,17 15.6,15.4 15.6,13.4V13H17.6V13.4C17.6,16.2 15.6,18.5 13,19Z" /></svg>
+        <span class="item-name">Riesling Dry</span>
+        <span class="dots"></span>
+        <span class="price">¥1,200</span>
+    </div>
+    <div class="menu-item">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M12,2L12,2C10.11,2 8.5,3.5 8.5,5.4V10C8.5,11.91 10,13.52 11.9,13.6L12,13.6C12.1,13.6 12.1,13.6 12.2,13.6C14.1,13.52 15.6,11.91 15.6,10V5.4C15.6,3.5 13.9,2 12,2M13,19V22H11V19C8.39,18.5 6.4,16.2 6.4,13.4V13H8.4V13.4C8.4,15.4 10,17 12,17C14,17 15.6,15.4 15.6,13.4V13H17.6V13.4C17.6,16.2 15.6,18.5 13,19Z" /></svg>
+        <span class="item-name">Cabernet Sauvignon (Red)</span>
+        <span class="dots"></span>
+        <span class="price">¥1,500</span>
+    </div>
+    <div class="menu-item">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M12,2L12,2C10.11,2 8.5,3.5 8.5,5.4V10C8.5,11.91 10,13.52 11.9,13.6L12,13.6C12.1,13.6 12.1,13.6 12.2,13.6C14.1,13.52 15.6,11.91 15.6,10V5.4C15.6,3.5 13.9,2 12,2M13,19V22H11V19C8.39,18.5 6.4,16.2 6.4,13.4V13H8.4V13.4C8.4,15.4 10,17 12,17C14,17 15.6,15.4 15.6,13.4V13H17.6V13.4C17.6,16.2 15.6,18.5 13,19Z" /></svg>
+        <span class="item-name">Pinot Noir (Burgundy)</span>
+        <span class="dots"></span>
+        <span class="price">¥1,800</span>
+    </div>
+    <div class="menu-item">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M12,2L12,2C10.11,2 8.5,3.5 8.5,5.4V10C8.5,11.91 10,13.52 11.9,13.6L12,13.6C12.1,13.6 12.1,13.6 12.2,13.6C14.1,13.52 15.6,11.91 15.6,10V5.4C15.6,3.5 13.9,2 12,2M13,19V22H11V19C8.39,18.5 6.4,16.2 6.4,13.4V13H8.4V13.4C8.4,15.4 10,17 12,17C14,17 15.6,15.4 15.6,13.4V13H17.6V13.4C17.6,16.2 15.6,18.5 13,19Z" /></svg>
+        <span class="item-name">Merlot Reserve</span>
+        <span class="dots"></span>
+        <span class="price">¥1,600</span>
+    </div>
+    <div class="menu-item">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M12,2L12,2C10.11,2 8.5,3.5 8.5,5.4V10C8.5,11.91 10,13.52 11.9,13.6L12,13.6C12.1,13.6 12.1,13.6 12.2,13.6C14.1,13.52 15.6,11.91 15.6,10V5.4C15.6,3.5 13.9,2 12,2M13,19V22H11V19C8.39,18.5 6.4,16.2 6.4,13.4V13H8.4V13.4C8.4,15.4 10,17 12,17C14,17 15.6,15.4 15.6,13.4V13H17.6V13.4C17.6,16.2 15.6,18.5 13,19Z" /></svg>
+        <span class="item-name">Syrah (Shiraz)</span>
+        <span class="dots"></span>
+        <span class="price">¥1,400</span>
+    </div>
+    <div class="menu-item">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M12,2L12,2C10.11,2 8.5,3.5 8.5,5.4V10C8.5,11.91 10,13.52 11.9,13.6L12,13.6C12.1,13.6 12.1,13.6 12.2,13.6C14.1,13.52 15.6,11.91 15.6,10V5.4C15.6,3.5 13.9,2 12,2M13,19V22H11V19C8.39,18.5 6.4,16.2 6.4,13.4V13H8.4V13.4C8.4,15.4 10,17 12,17C14,17 15.6,15.4 15.6,13.4V13H17.6V13.4C17.6,16.2 15.6,18.5 13,19Z" /></svg>
+        <span class="item-name">Bordeaux Blend</span>
+        <span class="dots"></span>
+        <span class="price">¥2,300</span>
+    </div>
+    <div class="menu-item">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M12,2L12,2C10.11,2 8.5,3.5 8.5,5.4V10C8.5,11.91 10,13.52 11.9,13.6L12,13.6C12.1,13.6 12.1,13.6 12.2,13.6C14.1,13.52 15.6,11.91 15.6,10V5.4C15.6,3.5 13.9,2 12,2M13,19V22H11V19C8.39,18.5 6.4,16.2 6.4,13.4V13H8.4V13.4C8.4,15.4 10,17 12,17C14,17 15.6,15.4 15.6,13.4V13H17.6V13.4C17.6,16.2 15.6,18.5 13,19Z" /></svg>
+        <span class="item-name">Rosé d'Anjou</span>
+        <span class="dots"></span>
+        <span class="price">¥1,200</span>
+    </div>
+
+    <div class="category-banner">CHAMPAGNE</div>
+    <div class="menu-item">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M10,22H14V20H13V15.93C15.82,15.46 18,13 18,10V2H6V10C6,13 8.18,15.46 11,15.93V20H10V22M8,4H16V6H8V4M8,8H16V10C16,12.21 14.21,14 12,14C9.79,14 8,12.21 8,10V8Z" /></svg>
+        <span class="item-name">Moët & Chandon Brut</span>
+        <span class="dots"></span>
+        <span class="price">¥2,500</span>
+    </div>
+    <div class="menu-item">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M10,22H14V20H13V15.93C15.82,15.46 18,13 18,10V2H6V10C6,13 8.18,15.46 11,15.93V20H10V22M8,4H16V6H8V4M8,8H16V10C16,12.21 14.21,14 12,14C9.79,14 8,12.21 8,10V8Z" /></svg>
+        <span class="item-name">Veuve Clicquot Yellow</span>
+        <span class="dots"></span>
+        <span class="price">¥2,800</span>
+    </div>
+    <div class="menu-item">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M10,22H14V20H13V15.93C15.82,15.46 18,13 18,10V2H6V10C6,13 8.18,15.46 11,15.93V20H10V22M8,4H16V6H8V4M8,8H16V10C16,12.21 14.21,14 12,14C9.79,14 8,12.21 8,10V8Z" /></svg>
+        <span class="item-name">Dom Pérignon Vintage</span>
+        <span class="dots"></span>
+        <span class="price">¥5,500</span>
+    </div>
+    <div class="menu-item">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M10,22H14V20H13V15.93C15.82,15.46 18,13 18,10V2H6V10C6,13 8.18,15.46 11,15.93V20H10V22M8,4H16V6H8V4M8,8H16V10C16,12.21 14.21,14 12,14C9.79,14 8,12.21 8,10V8Z" /></svg>
+        <span class="item-name">Krug Grande Cuvée</span>
+        <span class="dots"></span>
+        <span class="price">¥6,200</span>
+    </div>
+    <div class="menu-item">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M10,22H14V20H13V15.93C15.82,15.46 18,13 18,10V2H6V10C6,13 8.18,15.46 11,15.93V20H10V22M8,4H16V6H8V4M8,8H16V10C16,12.21 14.21,14 12,14C9.79,14 8,12.21 8,10V8Z" /></svg>
+        <span class="item-name">Perrier-Jouët Epoque</span>
+        <span class="dots"></span>
+        <span class="price">¥4,800</span>
+    </div>
+    <div class="menu-item">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M10,22H14V20H13V15.93C15.82,15.46 18,13 18,10V2H6V10C6,13 8.18,15.46 11,15.93V20H10V22M8,4H16V6H8V4M8,8H16V10C16,12.21 14.21,14 12,14C9.79,14 8,12.21 8,10V8Z" /></svg>
+        <span class="item-name">Taittinger Brut</span>
+        <span class="dots"></span>
+        <span class="price">¥2,400</span>
+    </div>
+    <div class="menu-item">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M10,22H14V20H13V15.93C15.82,15.46 18,13 18,10V2H6V10C6,13 8.18,15.46 11,15.93V20H10V22M8,4H16V6H8V4M8,8H16V10C16,12.21 14.21,14 12,14C9.79,14 8,12.21 8,10V8Z" /></svg>
+        <span class="item-name">Bollinger Special Cuvée</span>
+        <span class="dots"></span>
+        <span class="price">¥3,200</span>
+    </div>
+    <div class="menu-item">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M10,22H14V20H13V15.93C15.82,15.46 18,13 18,10V2H6V10C6,13 8.18,15.46 11,15.93V20H10V22M8,4H16V6H8V4M8,8H16V10C16,12.21 14.21,14 12,14C9.79,14 8,12.21 8,10V8Z" /></svg>
+        <span class="item-name">Ruinart Blanc de Blancs</span>
+        <span class="dots"></span>
+        <span class="price">¥3,500</span>
+    </div>
+    <div class="menu-item">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M10,22H14V20H13V15.93C15.82,15.46 18,13 18,10V2H6V10C6,13 8.18,15.46 11,15.93V20H10V22M8,4H16V6H8V4M8,8H16V10C16,12.21 14.21,14 12,14C9.79,14 8,12.21 8,10V8Z" /></svg>
+        <span class="item-name">Laurent-Perrier Cuvée</span>
+        <span class="dots"></span>
+        <span class="price">¥2,600</span>
+    </div>
+    <div class="menu-item">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M10,22H14V20H13V15.93C15.82,15.46 18,13 18,10V2H6V10C6,13 8.18,15.46 11,15.93V20H10V22M8,4H16V6H8V4M8,8H16V10C16,12.21 14.21,14 12,14C9.79,14 8,12.21 8,10V8Z" /></svg>
+        <span class="item-name">Pol Roger Reserve</span>
+        <span class="dots"></span>
+        <span class="price">¥3,100</span>
+    </div>
+
+    <div class="category-banner">CLASSIC COCKTAILS</div>
     <div class="menu-item">
         <svg class="icon" viewBox="0 0 24 24"><path d="M3,2H21V20A2,2 0 0,1 19,22H5A2,2 0 0,1 3,20V2M5,4V7H19V4H5M5,9V20H19V9H5Z" /></svg>
         <span class="item-name">Old Fashioned</span>
         <span class="dots"></span>
         <span class="price">¥1,400</span>
     </div>
-
     <div class="menu-item">
         <svg class="icon" viewBox="0 0 24 24"><path d="M3,2H21V20A2,2 0 0,1 19,22H5A2,2 0 0,1 3,20V2M5,4V7H19V4H5M5,9V20H19V9H5Z" /></svg>
         <span class="item-name">Negroni</span>
@@ -162,14 +330,12 @@
     </div>
 
     <div class="category-banner">BAR BITES</div>
-
     <div class="menu-item">
         <svg class="icon" viewBox="0 0 24 24"><path d="M11,2L9,4L11,6L9,8L11,10L9,12L11,14L9,16L11,18L9,20L11,22H13L15,20L13,18L15,16L13,14L15,12L13,10L15,8L13,6L15,4L13,2H11Z" /></svg>
         <span class="item-name">Truffle Fries</span>
         <span class="dots"></span>
         <span class="price">¥900</span>
     </div>
-
     <div class="menu-item">
         <svg class="icon" viewBox="0 0 24 24"><path d="M11,7L9.6,8.4L11.2,10L9.6,11.6L11,13L12.6,11.4L14.2,13L15.6,11.6L14,10L15.6,8.4L14.2,7L12.6,8.6L11,7Z" /></svg>
         <span class="item-name">Artisan Cheese Plate</span>
