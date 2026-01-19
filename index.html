@@ -15,7 +15,6 @@
             --gold-dark: #8a6e3e;
             --bg-deep: #0a0a0b;
             --text-main: #e6e6e6;
-            --text-dim: #888888;
         }
 
         body {
@@ -26,7 +25,6 @@
             display: flex;
             justify-content: center;
             min-height: 100vh;
-            /* 背景のテクスチャ感 */
             background-image: 
                 radial-gradient(circle at 50% 0%, #25252b, #050505),
                 url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
@@ -42,27 +40,25 @@
             animation: fadeIn 1.5s ease-out;
         }
 
-        /* 繊細な外枠 */
         .menu-container::before {
             content: '';
             position: absolute;
             top: 20px; bottom: 20px; left: 20px; right: 20px;
             border: 1px solid var(--gold-dark);
-            opacity: 0.2;
+            opacity: 0.25;
             pointer-events: none;
-            z-index: 0;
         }
 
         header {
             text-align: center;
             margin-bottom: 80px;
             position: relative;
-            z-index: 1;
         }
 
+        /* ロゴ全体にグラデーションを適用 */
         header h1 {
             font-family: 'Cinzel', serif;
-            line-height: 0.85; /* 行間を極限まで詰めてロゴ化 */
+            line-height: 0.85;
             margin: 0;
             font-weight: 400;
             background: linear-gradient(45deg, var(--gold-dark), var(--gold-main), var(--gold-light), var(--gold-main));
@@ -70,24 +66,21 @@
             -webkit-text-fill-color: transparent;
             background-size: 200% auto;
             animation: shine 5s linear infinite;
-            text-shadow: 0 4px 10px rgba(0,0,0,0.5);
         }
 
-        /* "THE" を小さく */
         header h1 span.sub-title {
             display: block;
-            font-size: 1.4rem;
-            letter-spacing: 15px; /* 字間を広く */
+            font-size: 1.5rem; /* 少し大きく */
+            letter-spacing: 22px;
             margin-bottom: 8px;
-            opacity: 0.85;
-            padding-left: 15px; /* センターバランス調整 */
+            padding-left: 22px; /* センター寄せの微調整 */
+            font-weight: 600; /* 可視性を上げるため少し太めに */
         }
 
-        /* "STRATUM" を大きく */
         header h1 span.main-title {
             display: block;
-            font-size: 4rem;
-            letter-spacing: 10px;
+            font-size: 4.2rem;
+            letter-spacing: 12px;
         }
 
         header p {
@@ -95,9 +88,8 @@
             font-size: 0.8rem;
             letter-spacing: 6px;
             color: var(--gold-main);
-            margin-top: 25px;
+            margin-top: 30px;
             text-transform: uppercase;
-            opacity: 0.7;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -110,20 +102,18 @@
             width: 25px;
             height: 1px;
             background: var(--gold-main);
-            opacity: 0.4;
+            opacity: 0.5;
         }
 
         .category-section {
             margin-bottom: 70px;
-            position: relative;
-            z-index: 1;
             text-align: center;
         }
 
         .category-title {
             font-family: 'Cinzel', serif;
             color: var(--gold-main);
-            font-size: 1.25rem;
+            font-size: 1.3rem;
             letter-spacing: 5px;
             margin-bottom: 35px;
             position: relative;
@@ -139,7 +129,6 @@
             transform: translateX(-50%);
             font-size: 8px;
             color: var(--gold-dark);
-            opacity: 0.7;
         }
 
         .menu-list {
@@ -153,12 +142,10 @@
         }
         
         .item-name {
-            font-size: 1.35rem;
+            font-size: 1.4rem;
             letter-spacing: 1.5px;
             color: var(--text-main);
-            display: block;
             transition: all 0.5s ease;
-            font-weight: 400;
         }
 
         .menu-item:hover .item-name {
@@ -171,48 +158,37 @@
             margin-top: 100px;
             padding-top: 40px;
             text-align: center;
-            position: relative;
-            z-index: 1;
         }
 
         .notice-area::before {
             content: '';
             display: block;
-            width: 30px;
+            width: 35px;
             height: 1px;
             background: var(--gold-dark);
             margin: 0 auto 30px auto;
-            opacity: 0.5;
         }
 
         .notice-text-ja {
             display: block;
-            font-family: 'Zen Old Mincho', serif;
-            font-size: 0.85rem;
-            color: var(--text-main);
+            font-size: 0.9rem;
             margin-bottom: 12px;
             letter-spacing: 2px;
-            opacity: 0.9;
         }
 
         .notice-text-en {
             display: block;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 0.95rem;
+            font-size: 1rem;
             color: var(--gold-main);
             font-style: italic;
-            letter-spacing: 1px;
-            opacity: 0.75;
         }
 
-        /* アニメーション */
         @keyframes shine { to { background-position: 200% center; } }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
 
         @media (max-width: 480px) {
             header h1 span.main-title { font-size: 3rem; }
-            header h1 span.sub-title { font-size: 1.1rem; }
-            .menu-container { padding: 50px 25px 80px 25px; }
+            header h1 span.sub-title { font-size: 1.2rem; letter-spacing: 14px; }
         }
     </style>
 </head>
@@ -242,26 +218,7 @@
         <ul class="menu-list">
             <li class="menu-item"><span class="item-name">獺祭 磨き二割三分</span></li>
             <li class="menu-item"><span class="item-name">久保田 萬寿</span></li>
-            <li class="menu-item"><span class="item-name">黒龍 しずく</span></li>
-            <li class="menu-item"><span class="item-name">而今 特別純米</span></li>
             <li class="menu-item"><span class="item-name">新政 No.6 S-type</span></li>
-        </ul>
-    </div>
-
-    <div class="category-section">
-        <div class="category-title">Wine Selection</div>
-        <ul class="menu-list">
-            <li class="menu-item"><span class="item-name">Chablis Premier Cru</span></li>
-            <li class="menu-item"><span class="item-name">Pinot Noir (Burgundy)</span></li>
-            <li class="menu-item"><span class="item-name">Bordeaux Blend</span></li>
-        </ul>
-    </div>
-
-    <div class="category-section">
-        <div class="category-title">Bar Bites</div>
-        <ul class="menu-list">
-            <li class="menu-item"><span class="item-name">Artisan Cheese Plate</span></li>
-            <li class="menu-item"><span class="item-name">Truffle Fries</span></li>
         </ul>
     </div>
 
