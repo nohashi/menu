@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lounge - Exclusive Menu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Zen+Old+Mincho:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* より金属的な質感のゴールド */
+            --gold-light: #fdfbf1;
+            --gold-main: #cda45e;
+            --gold-dark: #8a6e3e;
+            --gold-shadow: #463b25;
+            
+            --bg-deep: #0a0a0b;
+            --bg-card: #151518;
+            --text-main: #e6e6e6;
+            --text-dim: #999999;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            margin: 0;
+            padding: 0;
+            font-family: 'Cormorant Garamond', 'Zen Old Mincho', serif;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+            /* 背景にわずかなノイズを加えて高級紙のような質感を出す */
+            background-image: 
+                radial-gradient(circle at 50% 0%, #25252b, #050505),
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+        }
+
+        .menu-container {
+            width: 100%;
+            max-width: 600px;
+            padding: 60px 30px;
+            box-sizing: border-box;
+            color: var(--text-main);
+            position: relative;
+            /* ページ全体がフェードインするアニメーション */
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        /* 外枠の装飾線 */
+        .menu-container::before {
+            content: '';
+            position: absolute;
+            top: 20px; bottom: 20px; left: 20px; right: 20px;
+            border: 1px solid var(--gold-dark);
+            opacity: 0.3;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        header h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 3.5rem;
+            letter-spacing: 8px;
+            margin: 0;
+            font-weight: 400;
+            /* ゴールドのグラデーション文字 */
+            background: linear-gradient(45deg, var(--gold-dark), var(--gold-main), var(--gold-light), var(--gold-main));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 5s linear infinite;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+
+        header p {
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            letter-spacing: 6px;
+            color: var(--gold-main);
+            margin-top: 10px;
+            text-transform: uppercase;
+            opacity: 0.8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        header p::before, header p::after {
+            content: '';
+            display: block;
+            width: 30px;
+            height: 1px;
+            background: var(--gold-main);
+            opacity: 0.5;
+        }
+
+        .category-section {
+            margin-bottom: 50px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .category-title {
+            font-family: 'Cinzel', serif;
+            color: var(--gold-main);
+            text-align: center;
+            font-size: 1.4rem;
+            letter-spacing: 3px;
+            margin-bottom: 25px;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+            padding-bottom: 8px;
+        }
+
+        /* カテゴリ下の装飾 */
+        .category-title::after {
+            content: '♦';
+            display: block;
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 10px;
+            color: var(--gold-dark);
+        }
+
+        .menu-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 16px;
+            transition: transform 0.3s ease;
+        }
+        
+        /* ホバー時に少し明るく */
+        .menu-item:hover .item-name {
+            color: var(--gold-light);
+            text-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
+        }
+
+        .item-info {
+            flex-grow: 1;
+            display: flex;
+            align-items: baseline;
+            overflow: hidden;
+        }
+
+        .item-name {
+            font-size: 1.2rem;
+            letter-spacing: 0.5px;
+            color: var(--text-main);
+            white-space: nowrap;
+            transition: color 0.3s;
+        }
+
+        /* 日本語がある場合のフォント調整 */
+        .item-name:lang(ja), .item-name {
+             font-family: 'Cormorant Garamond', 'Zen Old Mincho', serif;
+        }
+
+        /* 点線リーダーをより繊細な線に変更 */
+        .separator {
+            flex-grow: 1;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin: 0 15px;
+            position: relative;
+            top: -5px;
+        }
+
+        .price {
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            color: var(--gold-main);
+            white-space: nowrap;
+        }
+
+        .item-desc {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            margin-top: -10px;
+            margin-bottom: 20px;
+            font-style: italic;
+            display: block;
+            opacity: 0.7;
+        }
+
+        /* アニメーション定義 */
+        @keyframes shine {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* レスポンシブ対応 */
+        @media (max-width: 480px) {
+            header h1 { font-size: 2.5rem; }
+            .menu-container { padding: 40px 20px; }
+            .menu-container::before { top: 10px; bottom: 10px; left: 10px; right: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="menu-container">
+    <header>
+        <h1>LOUNGE</h1>
+        <p>Premium Bar Menu</p>
+    </header> 
+
+    <div class="category-section">
+        <div class="category-title">Signature Cocktails</div>
+        <ul class="menu-list">
+            <li class="menu-item">
+                <div class="item-info">
+                    <span class="item-name">Midnight Manhattan</span>
+                    <span class="separator"></span>
+                </div>
+                <span class="price">1,500</span>
+            </li>
+            <li class="menu-item">
+                <div class="item-info">
+                    <span class="item-name">Golden Hour G&T</span>
+                    <span class="separator"></span>
+                </div>
+                <span class="price">1,300</span>
+            </li>
+            <li class="menu-item">
+                <div class="item-info">
+                    <span class="item-name">Old Fashioned</span>
+                    <span class="separator"></span>
+                </div>
+                <span class="price">1,400</span>
+            </li>
+            <li class="menu-item">
+                <div class="item-info">
+                    <span class="item-name">Negroni</span>
+                    <span class="separator"></span>
+                </div>
+                <span class="price">1,400</span>
+            </li>
+        </ul>
+    </div>
+
+    <div class="category-section">
+        <div class="category-title">Premium Sake</div>
+        <ul class="menu-list">
+            <li class="menu-item">
+                <div class="item-info">
+                    <span class="item-name">獺祭 磨き二割三分</span>
+                    <span class="separator"></span>
+                </div>
+                <span class="price">2,800</span>
+            </li>
+            <li class="menu-item">
+                <div class="item-info">
+                    <span class="item-name">久保田 萬寿</span>
+                    <span class="separator"></span>
+                </div>
+                <span class="price">2,400</span>
+            </li>
+            <li class="menu-item">
+                <div class="item-info">
+                    <span class="item-name">黒龍 しずく</span>
+                    <span class="separator"></span>
+                </div>
+                <span class="price">3,000</span>
+            </li>
+            <li class="menu-item">
+                <div class="item-info">
+                    <span class="item-name">而今 特別純米</span>
+                    <span class="separator"></span>
+                </div>
+                <span class="price">1,800</span>
+            </li>
+             <li class="menu-item">
+                <div class="item-info">
+                    <span class="item-name">新政 No.6 S-type</span>
+                    <span class="separator"></span>
+                </div>
+                <span class="price">2,200</span>
+            </li>
+        </ul>
+    </div>
+
+    <div class="category-section">
+        <div class="category-title">Wine Selection</div>
+        <ul class="menu-list">
+            <li class="menu-item">
+                <div class="item-info">
+                    <span class="item-name">Chablis Premier Cru</span>
+                    <span class="separator"></span>
+                </div>
+                <span class="price">2,100</span>
+            </li>
+            <li class="menu-item">
+                <div class="item-info">
+                    <span class="item-name">Pinot Noir (Burgundy)</span>
+                    <span class="separator"></span>
+                </div>
+                <span class="price">1,800</span>
+            </li>
+            <li class="menu-item">
+                <div class="item-info">
+                    <span class="item-name">Bordeaux Blend</span>
+                    <span class="separator"></span>
+                </div>
+                <span class="price">2,300</span>
+            </li>
+             <li class="menu-item">
+                <div class="item-info">
+                    <span class="item-name">Cabernet Sauvignon</span>
+                    <span class="separator"></span>
+                </div>
+                <span class="price">1,500</span>
+            </li>
+        </ul>
+    </div>
+
+    <div class="category-section">
+        <div class="category-title">Champagne</div>
+        <ul class="menu-list">
+            <li class="menu-item">
+                <div class="item-info">
+                    <span class="item-name">Krug Grande Cuvée</span>
+                    <span class="separator"></span>
+                </div>
+                <span class="price">6,200</span>
+            </li>
+            <li class="menu-item">
+                <div class="item-info">
+                    <span class="item-name">Dom Pérignon Vintage</span>
+                    <span class="separator"></span>
+                </div>
+                <span class="price">5,500</span>
+            </li>
+            <li class="menu-item">
+                <div class="item-info">
+                    <span class="item-name">Moët & Chandon Brut</span>
+                    <span class="separator"></span>
+                </div>
+                <span class="price">2,500</span>
+            </li>
+        </ul>
+    </div>
+
+    <div class="category-section">
+        <div class="category-title">Bar Bites</div>
+        <ul class="menu-list">
+            <li class="menu-item">
+                <div class="item-info">
+                    <span class="item-name">Artisan Cheese Plate</span>
+                    <span class="separator"></span>
+                </div>
+                <span class="price">1,600</span>
+            </li>
+            <li class="menu-item">
+                <div class="item-info">
+                    <span class="item-name">Truffle Fries</span>
+                    <span class="separator"></span>
+                </div>
+                <span class="price">900</span>
+            </li>
+        </ul>
+    </div>
+
+</div>
+
+</body>
+</html>
