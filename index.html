@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>THE STRATUM - Exclusive Menu</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,6 +16,9 @@
             --bg-deep: #0a0a0b;
             --text-main: #e6e6e6;
         }
+
+        /* iOSでのタップ反応を良くする設定 */
+        * { -webkit-tap-highlight-color: transparent; }
 
         body {
             background-color: var(--bg-deep);
@@ -33,7 +36,7 @@
         .menu-container {
             width: 100%;
             max-width: 600px;
-            padding: 80px 40px 100px 40px;
+            padding: 60px 20px 100px 20px;
             box-sizing: border-box;
             color: var(--text-main);
             position: relative;
@@ -51,11 +54,10 @@
 
         header {
             text-align: center;
-            margin-bottom: 80px;
+            margin-bottom: 60px;
             position: relative;
         }
 
-        /* ロゴ全体にグラデーションを適用 */
         header h1 {
             font-family: 'Cinzel', serif;
             line-height: 0.85;
@@ -70,25 +72,25 @@
 
         header h1 span.sub-title {
             display: block;
-            font-size: 1.5rem; /* 少し大きく */
-            letter-spacing: 22px;
+            font-size: 1.2rem;
+            letter-spacing: 18px;
             margin-bottom: 8px;
-            padding-left: 22px; /* センター寄せの微調整 */
-            font-weight: 600; /* 可視性を上げるため少し太めに */
+            padding-left: 18px;
+            font-weight: 600;
         }
 
         header h1 span.main-title {
             display: block;
-            font-size: 4.2rem;
-            letter-spacing: 12px;
+            font-size: clamp(2.5rem, 12vw, 4.2rem); /* 画面幅に合わせて伸縮 */
+            letter-spacing: 8px;
         }
 
         header p {
             font-family: 'Cinzel', serif;
-            font-size: 0.8rem;
-            letter-spacing: 6px;
+            font-size: 0.75rem;
+            letter-spacing: 5px;
             color: var(--gold-main);
-            margin-top: 30px;
+            margin-top: 25px;
             text-transform: uppercase;
             display: flex;
             align-items: center;
@@ -99,25 +101,26 @@
         header p::before, header p::after {
             content: '';
             display: block;
-            width: 25px;
+            width: 20px;
             height: 1px;
             background: var(--gold-main);
             opacity: 0.5;
         }
 
         .category-section {
-            margin-bottom: 70px;
+            margin-bottom: 50px;
             text-align: center;
         }
 
         .category-title {
             font-family: 'Cinzel', serif;
             color: var(--gold-main);
-            font-size: 1.3rem;
-            letter-spacing: 5px;
-            margin-bottom: 35px;
+            font-size: clamp(1rem, 5vw, 1.3rem); /* 折れないようサイズを動的に */
+            letter-spacing: 4px;
+            margin-bottom: 30px;
             position: relative;
             display: inline-block;
+            white-space: nowrap; /* 絶対に改行させない */
         }
 
         .category-title::after {
@@ -139,23 +142,29 @@
 
         .menu-item {
             margin-bottom: 22px;
+            cursor: pointer;
+            outline: none;
         }
         
         .item-name {
-            font-size: 1.4rem;
-            letter-spacing: 1.5px;
+            font-size: 1.3rem;
+            letter-spacing: 1.2px;
             color: var(--text-main);
-            transition: all 0.5s ease;
+            display: inline-block;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.4s ease, text-shadow 0.4s ease;
+            will-change: transform;
         }
 
-        .menu-item:hover .item-name {
+        /* PCでのホバー ＆ iOSでのタップ時の拡大処理 */
+        .menu-item:hover .item-name,
+        .menu-item:active .item-name {
             color: var(--gold-light);
-            text-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
-            letter-spacing: 3px;
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
+            transform: scale(1.15); /* 拡大率を少し強調 */
         }
 
         .notice-area {
-            margin-top: 100px;
+            margin-top: 80px;
             padding-top: 40px;
             text-align: center;
         }
@@ -171,14 +180,14 @@
 
         .notice-text-ja {
             display: block;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             margin-bottom: 12px;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
         }
 
         .notice-text-en {
             display: block;
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: var(--gold-main);
             font-style: italic;
         }
@@ -186,15 +195,15 @@
         @keyframes shine { to { background-position: 200% center; } }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
 
-        @media (max-width: 480px) {
-            header h1 span.main-title { font-size: 3rem; }
-            header h1 span.sub-title { font-size: 1.2rem; letter-spacing: 14px; }
+        /* iPhone SEなどの小さな画面向け最終調整 */
+        @media (max-width: 375px) {
+            header h1 span.sub-title { letter-spacing: 12px; }
+            .category-title { letter-spacing: 3px; font-size: 0.95rem; }
+            .item-name { font-size: 1.15rem; }
         }
     </style>
 </head>
-<body>
-
-<div class="menu-container">
+<body ontouchstart=""> <div class="menu-container">
     <header>
         <h1>
             <span class="sub-title">THE</span>
@@ -206,19 +215,19 @@
     <div class="category-section">
         <div class="category-title">Signature Cocktails</div>
         <ul class="menu-list">
-            <li class="menu-item"><span class="item-name">Midnight Manhattan</span></li>
-            <li class="menu-item"><span class="item-name">Golden Hour G&T</span></li>
-            <li class="menu-item"><span class="item-name">Old Fashioned</span></li>
-            <li class="menu-item"><span class="item-name">Negroni</span></li>
+            <li class="menu-item" tabindex="0"><span class="item-name">Midnight Manhattan</span></li>
+            <li class="menu-item" tabindex="0"><span class="item-name">Golden Hour G&T</span></li>
+            <li class="menu-item" tabindex="0"><span class="item-name">Old Fashioned</span></li>
+            <li class="menu-item" tabindex="0"><span class="item-name">Negroni</span></li>
         </ul>
     </div>
 
     <div class="category-section">
         <div class="category-title">Premium Sake</div>
         <ul class="menu-list">
-            <li class="menu-item"><span class="item-name">獺祭 磨き二割三分</span></li>
-            <li class="menu-item"><span class="item-name">久保田 萬寿</span></li>
-            <li class="menu-item"><span class="item-name">新政 No.6 S-type</span></li>
+            <li class="menu-item" tabindex="0"><span class="item-name">獺祭 磨き二割三分</span></li>
+            <li class="menu-item" tabindex="0"><span class="item-name">久保田 萬寿</span></li>
+            <li class="menu-item" tabindex="0"><span class="item-name">新政 No.6 S-type</span></li>
         </ul>
     </div>
 
